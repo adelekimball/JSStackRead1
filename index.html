@@ -91,6 +91,13 @@ popupTemplate: popupEduusa
 //adding the feature layer to the map
 map.add(usaeduLayer);
 
+const KimballUSAirports = new FeatureLayer({
+    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/KimballUSAirports/FeatureServer"
+  });
+
+  // Add the new feature layer to the map
+  map.add(KimballUSAirports);
+
 });
   </script>
 
