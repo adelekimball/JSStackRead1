@@ -88,8 +88,8 @@ basemap: "arcgis-topographic" // Basemap layer
   });
   view.graphics.add(polylineGraphic); 
 //look below
-        // Create a polygon geometry
-        const polygon = {
+
+const polygon = {
           type: "polygon", // autocasts as new Polygon()
           rings: [[-64.78, 32.3], [-66.07, 18.45], [-80.21, 25.78], [-64.78, 32.3]]
         };
@@ -113,7 +113,6 @@ basemap: "arcgis-topographic" // Basemap layer
 
         // Add the graphics to the view's graphics layer
         view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
-      });
 
 
   // Define a pop-up for usaeduLayer
