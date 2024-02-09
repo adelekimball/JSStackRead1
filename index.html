@@ -76,7 +76,7 @@ basemap: "arcgis-topographic" // Basemap layer
  
   const graphicsLayer1 = new GraphicsLayer();
   map.add(graphicsLayer1);
-  
+
   const polygonGeometry = {
   type: "polygon",
   rings: [
@@ -106,7 +106,7 @@ const Austinblob = new Graphic({
 });
 
 // Add the polygon
-graphicsLayer.add(Austinblob);
+graphicsLayer1.add(Austinblob);
 
   // Define a pop-up for usaeduLayer
 const popupEduusa = {
