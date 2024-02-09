@@ -88,21 +88,32 @@ basemap: "arcgis-topographic" // Basemap layer
   });
   view.graphics.add(polylineGraphic); 
 //look below
-  const polygon = {
-    type: "polygon", 
-    paths: [[30.277345, -97.76171], [30.274425, -97.748288], [30.267554, -97.749581], [30.270474, -97.758332
-]]
-  };
-  const gonSymbol = {
-    type: "simple-fill", 
-    color: [226, 119, 40], // RGB color values as an array
-    width: 4
-  };
-  const polygonGraphic = new Graphic({
-    geometry: polygon, // Add the geometry created in step 3
-    symbol: gonSymbol, // Add the symbol created in step 4
-  });
-  view.graphics.add(polygonGraphic); 
+        // Create a polygon geometry
+        const polygon = {
+          type: "polygon", // autocasts as new Polygon()
+          rings: [[-64.78, 32.3], [-66.07, 18.45], [-80.21, 25.78], [-64.78, 32.3]]
+        };
+
+        // Create a symbol for rendering the graphic
+        const fillSymbol = {
+          type: "simple-fill", // autocasts as new SimpleFillSymbol()
+          color: [227, 139, 79, 0.8],
+          outline: {
+            // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 1
+          }
+        };
+
+        // Add the geometry and symbol to a new graphic
+        const polygonGraphic = new Graphic({
+          geometry: polygon,
+          symbol: fillSymbol
+        });
+
+        // Add the graphics to the view's graphics layer
+        view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
+      });
 
 
   // Define a pop-up for usaeduLayer
