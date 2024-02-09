@@ -96,7 +96,7 @@ const KimballUSAirports = new FeatureLayer({
   });
 
   // Add the new feature layer to the map
-  map.add(KimballUSAirports);
+ 
   
   const airportRenderer = {
         "type": "simple",
@@ -132,7 +132,7 @@ const airportLayer = new FeatureLayer({
   definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports
   labelingInfo: [airportLabels] //adding the labels
 });
-
+map.add(airportLayer);
 });
   </script>
 
@@ -147,15 +147,6 @@ const airportLayer = new FeatureLayer({
       width: 100%;
     }
   </style>
-
-</head>
-<body>
-
-  <!-- the div to displays the map  -->
-  <div id="viewDiv"></div>
-
-</body>
-</html>
 
 </head>
 <body>
