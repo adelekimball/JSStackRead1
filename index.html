@@ -72,7 +72,11 @@ basemap: "arcgis-topographic" // Basemap layer
   });
 
   graphicsLayer.add(pointGraphic);
-
+ 
+ 
+  const graphicsLayer1 = new GraphicsLayer();
+  map.add(graphicsLayer1);
+  
   const polygonGeometry = {
   type: "polygon",
   rings: [
