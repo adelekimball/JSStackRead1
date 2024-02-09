@@ -87,8 +87,21 @@ basemap: "arcgis-topographic" // Basemap layer
     symbol: lineSymbol, // Add the symbol created in step 4
   });
   view.graphics.add(polylineGraphic); 
-
-
+//look below
+  const polygon = {
+    type: "polygon", // autocasts as new Polyline()
+    paths: [[-97.7484, 20.2506], [-97.7560370, 30.2828]]
+  };
+  const gonSymbol = {
+    type: "polygon", 
+    color: [226, 119, 40], // RGB color values as an array
+    width: 4
+  };
+  const polygonGraphic = new Graphic({
+    geometry: polygon, // Add the geometry created in step 3
+    symbol: gonSymbol, // Add the symbol created in step 4
+  });
+  view.graphics.add(polygonGraphic); 
 
 
   // Define a pop-up for usaeduLayer
