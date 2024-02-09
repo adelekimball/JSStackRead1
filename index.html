@@ -75,8 +75,8 @@ basemap: "arcgis-topographic" // Basemap layer
   
   // Define a pop-up for usaeduLayer
 const popupEduusa = {
-  "title": "EDUs",
-  "content": "<b>Name:</b> {INSTNM}<br><b>Total Enrollment:</b> {TOT_ENROLL}<br>"
+  "title": "Colleges and Universities of the United States",
+  "content": "<b>Name:</b> {INSTNM}<br><b>City:</b> {CITY}<br><b>State:</b> {STABBR}<br>"
 }
 
 //adding the Const for the feature layer
@@ -84,7 +84,7 @@ const usaeduLayer = new FeatureLayer({
 url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
 
 //adding the popup here
-outFields: ["INSTNM","TOT_ENROLL"],
+outFields: ["INSTNM","CITY","STABBR"],
 popupTemplate: popupEduusa
  });
 
