@@ -90,13 +90,6 @@ popupTemplate: popupEduusa
 
 //adding the feature layer to the map
 map.add(usaeduLayer);
-
-const KimballUSAirports = new FeatureLayer({
-    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/KimballUSAirports/FeatureServer"
-  });
-
-  // Add the new feature layer to the map
- 
   
   const airportRenderer = {
         "type": "simple",
@@ -133,6 +126,24 @@ const airportLayer = new FeatureLayer({
   labelingInfo: [airportLabels] //adding the labels
 });
 map.add(airportLayer);
+
+const HeliRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://adelekimball.github.io/AGOLRead1/free-helicopter-icon-1055-thumb.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
+const HeliLayer = new FeatureLayer({
+url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
+renderer: HeliRenderer, //calling the icon
+definitionExpression: "Fac_Type = 'HELIPORT'" //adding sql to filter for airports
+map.add(HeliLayer)
+
+});      
 });
   </script>
 
