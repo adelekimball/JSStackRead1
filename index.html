@@ -17,7 +17,10 @@
      "esri/config",
       "esri/Map",
       "esri/views/MapView"
-    ], function (esriConfig,Map, MapView) {
+      "esri/Graphic",  
+      "esri/layers/GraphicsLayer"   
+], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+
 
       esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
       const map = new Map({
@@ -30,7 +33,27 @@
           zoom: 13, // Zoom level
           container: "viewDiv" // Div element
         });
+          const graphicsLayer = new GraphicsLayer();  
+          map.add(graphicsLayer);
     });
+          const point = { //Create a point  
+        type: "point",  
+        longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
+        latitude: 30.263098
+      };
+          const simpleMarkerSymbol = {  
+        type: "simple-marker",  
+        color: [0, 0, 139],  // Color of blues rock
+        outline: {  
+          color: [255, 255, 255], // White  
+          width: 1
+        }  
+      };
+    const pointGraphic = new Graphic({  
+  geometry: point,  
+  symbol: simpleMarkerSymbol  
+});
+    graphicsLayer.add(pointGraphic);
   </script>
 
   <!-- css to make a full screen map -->
