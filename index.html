@@ -108,6 +108,45 @@ const Austinblob = new Graphic({
 // Add the polygon
 graphicsLayer1.add(Austinblob);
 
+map.add(graphicsLayer1);
+
+
+const polylineGeometry = {
+  type: "polyline",
+  paths: [
+    // Define the coordinates of the polyline vertices
+    // Each vertex is an array of [longitude, latitude] pairs
+    [
+      [30.2687297, -97.7682414], // Vertex 1
+      [30.2615956, -97.7492034], // Vertex 2
+    ]
+  ]
+};
+
+// Define the polyline symbol
+const polylineSymbol = {
+  type: "simple-line",
+  color: [0, 0, 0], 
+  width: 2 
+};
+
+const polylineGraphic = new Graphic({
+  geometry: polylineGeometry,
+  symbol: polylineSymbol
+});
+
+// Create a graphics layer
+const graphicsLayer2 = new GraphicsLayer();
+
+// Add the polyline graphic to the graphics layer
+graphicsLayer2.add(polylineGraphic);
+
+// Add the graphics layer to the map
+map.add(graphicsLayer2);
+
+
+
+
   // Define a pop-up for usaeduLayer
 const popupEduusa = {
   "title": "Colleges and Universities of the United States",
