@@ -13,20 +13,23 @@
   <!-- Adding the modules, API key, and map constant needed for a full screen map app -->
   <script>
   
-   require([
-  "esri/config",
-  "esri/Map",
-  "esri/views/MapView",
-  "esri/Graphic",
-  "esri/layers/GraphicsLayer",
-  "esri/layers/FeatureLayer",
-], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer {
+  require([
+"esri/config",
+"esri/Map",
+"esri/views/MapView",
 
-  esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
+// adding in the modules for the graphic and graphic layer
+"esri/Graphic",
+"esri/layers/GraphicsLayer",
 
-  const map = new Map({
-    basemap: "arcgis-topographic"
-  });
+//adding in the module for the feature layers
+"esri/layers/FeatureLayer"
+
+ ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
+esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
+const map = new Map({
+basemap: "arcgis-topographic" // Basemap layer
+});
 
   const view = new MapView({
     map: map,
