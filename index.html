@@ -102,15 +102,35 @@ const KimballUSAirports = new FeatureLayer({
         "type": "simple",
         "symbol": {
           "type": "picture-marker",
-          "url": "https://sounny.github.io/agol/outline_local_airport_black_24dp.png",
+          "url": "https://adelekimball.github.io/AGOLRead1/outline_local_airport_black_24dp.png",
           "width": "18px",
           "height": "18px"
         }
       }
-      const airportLayer = new FeatureLayer({
-url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
-renderer: airportRenderer, //calling the icon
-definitionExpression: "Fac_Type = 'AIRPORT'" //adding sql to filter for airports
+    //const to make the airport labels
+const airportLabels = {
+  symbol: {
+    type: "text",
+    color: "#FFFFFF",
+    haloColor: "#5E8D74",
+    haloSize: "2px",
+    font: {
+      size: "12px",
+      family: "Noto Sans",
+      style: "italic",
+      weight: "normal"
+    }
+  },
+  labelPlacement: "above-center",
+  labelExpressionInfo: {
+    expression: "$feature.Fac_Name"
+  }
+};
+const airportLayer = new FeatureLayer({
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
+  renderer: airportRenderer, //calling the icon
+  definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports
+  labelingInfo: [airportLabels] //adding the labels
 });
 
 });
