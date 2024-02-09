@@ -73,76 +73,20 @@ basemap: "arcgis-topographic" // Basemap layer
 
   graphicsLayer.add(pointGraphic);
  
- 
-  const graphicsLayer1 = new GraphicsLayer();
-  map.add(graphicsLayer1);
-
-  const polygonGeometry = {
-  type: "polygon",
-  rings: [
-    [
-      [30.2687653, -97.7498140], // Vertex 1
-      [30.2704168, -97.7495148], // Vertex 2
-      [30.2697581, -97.7472074], // Vertex 3
-      [30.2683806, -97.7477116], // Vertex 4 (closing vertex)
-    ]
-  ]
-};
-
-// Define the polygon symbol
-const polygonSymbol = {
-  type: "simple-fill", 
-  color: [227, 139, 79, 0.5], 
-  outline: {
-    color: [255, 255, 255], // Define the outline color (white)
-    width: 1 // Define the outline width
-  }
-};
-
-
-const Austinblob = new Graphic({
-  geometry: polygonGeometry,
-  symbol: polygonSymbol
-});
-
-// Add the polygon
-graphicsLayer.add(Austinblob);
-
-map.add(graphicsLayer1);
-
-
-const polylineGeometry = {
-  type: "polyline",
-  paths: [
-    // Define the coordinates of the polyline vertices
-    // Each vertex is an array of [longitude, latitude] pairs
-    [
-      [30.2687297, -97.7682414], // Vertex 1
-      [30.2615956, -97.7492034], // Vertex 2
-    ]
-  ]
-};
-
-// Define the polyline symbol
-const polylineSymbol = {
-  type: "simple-line",
-  color: [0, 0, 0], 
-  width: 2 
-};
-
-const polylineGraphic = new Graphic({
-  geometry: polylineGeometry,
-  symbol: polylineSymbol
-});
-
-// Create a graphics layer
-const graphicsLayer2 = new GraphicsLayer();
-
-// Add the polyline graphic to the graphics layer
-graphicsLayer.add(polylineGraphic);
-
-// Add the graphics layer to the map
-map.add(graphicsLayer2);
+  const polyline = {
+    type: "polyline", // autocasts as new Polyline()
+    paths: [[-111.3, 52.68], [-98, 49.5], [-93.94, 29.89]]
+  };
+  const lineSymbol = {
+    type: "simple-line", // autocasts as new SimpleLineSymbol()
+    color: [226, 119, 40], // RGB color values as an array
+    width: 4
+  };
+  const polylineGraphic = new Graphic({
+    geometry: polyline, // Add the geometry created in step 3
+    symbol: lineSymbol, // Add the symbol created in step 4
+  });
+  view.graphics.add(polylineGraphic); 
 
 
 
