@@ -23,9 +23,13 @@
 "esri/layers/GraphicsLayer",
 
 //adding in the module for the feature layers
-"esri/layers/FeatureLayer"
+"esri/layers/FeatureLayer", 
 
- ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
+//adding in editor
+"esri/widgets/Editor"
+
+
+ ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
 esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
 const map = new Map({
 basemap: "arcgis-topographic" // Basemap layer
@@ -183,9 +187,35 @@ const HeliLayer = new FeatureLayer({
 url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
 renderer: HeliRenderer, //calling the icon
 definitionExpression: "Fac_Type = 'HELIPORT'" //adding sql to filter for airports
+}); 
 
 
-});    
+//adding the const for the feature layer
+const myAirports = new FeatureLayer({
+ url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports1/FeatureServer",
+ 
+ //adding the popup here
+ outFields: ["AirportCode"],
+
+});
+
+//adding the feature layer to the map
+map.add(myAirports);
+// Set the point layer's LayerInfo
+const pointInfos = {
+ layer: myAirports
+}
+
+// Begin Editor constructor
+const editor = new Editor({
+ view: view,
+ layerInfos: [pointInfos]
+ }); // End Editor constructor
+
+// Add the widget to the view
+view.ui.add(editor, "top-right");
+
+   
 
 map.add(HeliLayer);
 
