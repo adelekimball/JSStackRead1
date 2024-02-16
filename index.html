@@ -179,14 +179,15 @@ const legend = new Legend({
     view: view,
     layerInfos: [
         {
-            title: "Airports with Codes",
+            title: "Major South Florida Airports",
             layer: myAirports // Reference to your FeatureLayer
         },
         {
             title: "Heliports",
             layer: HeliLayer // Reference to your FeatureLayer
-        }
-        // You can add more layerInfos objects as needed for other layers
+        },
+      {title: "other Airports",
+       layer: airportLayer}
     ]
 });
 
