@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello, ArcGIS Online!</title>
+  <title>Hello, JS Stack Write!</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
@@ -18,10 +18,6 @@
 "esri/Map",
 "esri/views/MapView",
 
-// adding in the modules for the graphic and graphic layer
-"esri/Graphic",
-"esri/layers/GraphicsLayer",
-
 //adding in the module for the feature layers
 "esri/layers/FeatureLayer", 
 
@@ -29,7 +25,7 @@
 "esri/widgets/Editor"
 
 
- ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
+ ], function (esriConfig,Map, MapView, FeatureLayer, Editor) {
 esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
 const map = new Map({
 basemap: "arcgis-topographic" // Basemap layer
@@ -41,82 +37,6 @@ basemap: "arcgis-topographic" // Basemap layer
     zoom: 13,
     container: "viewDiv"
   });
-
-  const graphicsLayer = new GraphicsLayer();
-  map.add(graphicsLayer);
-
-  const point = {
-    type: "point",
-    longitude: -97.750689,
-    latitude: 30.263098
-  };
-
-  const simpleMarkerSymbol = {
-    type: "simple-marker",
-    style: "x",
-    color: [0, 0, 139],
-    outline: {
-      color: [0, 0, 0],
-      width: 1
-    }
-  };
-  const popupTemplate = {
-    title: "{Name}",
-    content: "{Description}"
- }
- const attributes = {
-    Name: "Stevie Ray Vaughan Statue",
-    Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
- }
-  const pointGraphic = new Graphic({
-    geometry: point,
-    symbol: simpleMarkerSymbol,
-    attributes: attributes,
-    popupTemplate: popupTemplate
-  });
-
-  graphicsLayer.add(pointGraphic);
- 
-  const polyline = {
-    type: "polyline", // autocasts as new Polyline()
-    paths: [[-97.7484, 20.2506], [-97.7560370, 30.2828]]
-  };
-  const lineSymbol = {
-    type: "simple-line", // autocasts as new SimpleLineSymbol()
-    color: [226, 119, 40], // RGB color values as an array
-    width: 4
-  };
-  const polylineGraphic = new Graphic({
-    geometry: polyline, // Add the geometry created in step 3
-    symbol: lineSymbol, // Add the symbol created in step 4
-  });
-  view.graphics.add(polylineGraphic); 
-//look below
-
-const polygon = {
-          type: "polygon", // autocasts as new Polygon()
-          rings: [[-97.7303267, 30.2572884], [-97.7202747, 30.2673458], [-97.7134803, 30.2514357], [-97.7303267, 30.2572884]]
-        };
-
-        // Create a symbol for rendering the graphic
-        const fillSymbol = {
-          type: "simple-fill", // autocasts as new SimpleFillSymbol()
-          color: [227, 139, 79, 0.8],
-          outline: {
-            // autocasts as new SimpleLineSymbol()
-            color: [255, 255, 255],
-            width: 1
-          }
-        };
-
-        // Add the geometry and symbol to a new graphic
-        const polygonGraphic = new Graphic({
-          geometry: polygon,
-          symbol: fillSymbol
-        });
-
-        // Add the graphics to the view's graphics layer
-        view.graphics.addMany([pointGraphic, polylineGraphic, polygonGraphic]);
 
 
   // Define a pop-up for usaeduLayer
@@ -193,7 +113,7 @@ definitionExpression: "Fac_Type = 'HELIPORT'" //adding sql to filter for airport
 //adding the const for the feature layer
 const myAirports = new FeatureLayer({
  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports1/FeatureServer",
- 
+ renderer: airportRenderer,
  //adding the popup here
  outFields: ["AirportCode"],
 
