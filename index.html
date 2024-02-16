@@ -57,7 +57,8 @@ popupTemplate: popupEduusa
 
 //adding the feature layer to the map
 map.add(usaeduLayer);
-  
+
+  //airport renderer variable
   const airportRenderer = {
         "type": "simple",
         "symbol": {
@@ -86,6 +87,8 @@ const airportLabels = {
     expression: "$feature.Fac_Name"
   }
 };
+
+//adding in airport layer
 const airportLayer = new FeatureLayer({
   url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports/FeatureServer",
   renderer: airportRenderer, //calling the icon
@@ -94,6 +97,7 @@ const airportLayer = new FeatureLayer({
 });
 map.add(airportLayer);
 
+  //heliport renderer
 const HeliRenderer = {
         "type": "simple",
         "symbol": {
@@ -112,6 +116,7 @@ definitionExpression: "Fac_Type = 'HELIPORT'" //adding sql to filter for airport
 
 map.add(HeliLayer);
 
+//star renderer for new symbols
 const myairportRenderer = {
         "type": "simple",
         "symbol": {
@@ -121,7 +126,9 @@ const myairportRenderer = {
           "height": "18px"
         }
       }
-const myairportLabels = {
+
+  //making other labels in red
+  const myairportLabels = {
   symbol: {
     type: "text",
     color: "#FFFFFF",
@@ -167,7 +174,7 @@ const editor = new Editor({
 // Add the widget to the view
 view.ui.add(editor, "top-right");
 
-   
+//adding legend   
 const legend = new Legend({
             view: view,
             layerInfos: [
