@@ -112,7 +112,15 @@ definitionExpression: "Fac_Type = 'HELIPORT'" //adding sql to filter for airport
 
 map.add(HeliLayer);
 
-
+const myairportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://adelekimball.github.io/JSStackRead1/star_FILL0_wght400_GRAD0_opsz24.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
 const myairportLabels = {
   symbol: {
     type: "text",
@@ -165,7 +173,7 @@ const legend = new Legend({
             layerInfos: [
               {
                 layer: myAirports,
-                title: "Airport Codes"
+                title: "Airports with Codes"
               }
             ]
           });
