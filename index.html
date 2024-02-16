@@ -22,10 +22,11 @@
 "esri/layers/FeatureLayer", 
 
 //adding in editor
-"esri/widgets/Editor"
+"esri/widgets/Editor",
+//and legend
+"esri/widgets/Legend"
 
-
- ], function (esriConfig,Map, MapView, FeatureLayer, Editor) {
+ ], function (esriConfig,Map, MapView, FeatureLayer, Editor, Legend) {
 esriConfig.apiKey = "AAPK93c8121c16b24fcfb8615f6a648285depsp_n5EQrTHWocGTuMcvTeDuUlh73TY5B16e-HSnKUuuCX09Vv4mQ_hI_zx8fwt9";
 const map = new Map({
 basemap: "arcgis-topographic" // Basemap layer
@@ -159,7 +160,12 @@ const editor = new Editor({
 view.ui.add(editor, "top-right");
 
    
+const Legend = new Legend({
+  view: view,
+  layerinfos: [pointInfos]
+});
 
+view.ui.add(Legend, "bottom-left");
 
 
 });
