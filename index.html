@@ -160,11 +160,17 @@ const editor = new Editor({
 view.ui.add(editor, "top-right");
 
    
-let Legend = new Legend({
-  view: view,
-});
+const legend = new Legend({
+            view: view,
+            layerInfos: [
+              {
+                layer: myAirports,
+                title: "Airport Codes"
+              }
+            ]
+          });
 
-view.ui.add(Legend, "bottom-left");
+view.ui.add(legend, "bottom-right");
 
 
 });
