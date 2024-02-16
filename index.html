@@ -58,7 +58,7 @@ popupTemplate: popupEduusa
 //adding the feature layer to the map
 map.add(usaeduLayer);
   
-  const myairportRenderer = {
+  const airportRenderer = {
         "type": "simple",
         "symbol": {
           "type": "picture-marker",
@@ -144,7 +144,7 @@ const myairportLabels = {
 //adding the const for the feature layer
 const myAirports = new FeatureLayer({
  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/My_Airports1/FeatureServer",
- renderer: airportRenderer,
+ renderer: myairportRenderer,
  labelingInfo: [myairportLabels],
  //adding the popup here
  outFields: ["AirportCode"],
